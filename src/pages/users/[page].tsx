@@ -1,54 +1,53 @@
-import { IUser } from "@/interfaces/IUser";
 import Link from "next/link";
 import { GetServerSideProps } from "next/types";
 import Image from "next/image";
+import { IUser } from "@/interfaces/IUser";
+import Pagination from "@/components/Pagination";
+import { UsersItems } from "@/components/UsersItem";
 
-// interface UsersProps {
-// 	data: {
-// 		Users: IUser[];
-// 	};
-// 	query: { name: string };
-// }
-
-type Props = {
-	params: {
-		page: string;
+interface UsersProps {
+	data: {
+		users: IUser[];
+		total: number;
+		skip: number;
+		limit: number;
 	};
-};
+	query: { page: string };
+}
 
-const ListUserPage = ({ params: { page } }: Props) => {
-	console.log(page);
-	// const { Users } = data;
+const ListUserPage = ({ data, query }: UsersProps) => {
+	const { users, limit, total } = data;
+
 	return (
 		<>
-			{/* <ul className='flex justify-center  max-[640px]:mx-6 min-[320px]:h-ful mt-20 my-gap  mx-24 max-w-full flex-wrap gap-y-14 gap-x-4'>
-				{Users.map((el, index) => (
-					<li
-						className='flex flex-col 2xl:my-flex-basis xl:my-flex-basis md:my-flex-basis-xl'
-						key={index}>
-						<Link href={`/film/${el.id}`}>
-							<Image width={300} height={444} src={el.image} alt='poster' />
-							<div className=''>
-								<p>{el.firstName}</p>
-								<p>{el.maidenName}</p>
-								<p>{el.lastName}</p>
-							</div>
-						</Link>
-					</li>
-				))}
-			</ul> */}
+			{users ? (
+				<div className='bg-yellow-50'>
+					<ul className='flex justify-center  max-[640px]:mx-6 min-[320px]:h-ful p-20 my-gap  max-w-full flex-wrap gap-y-14 gap-x-4'>
+						{users.map((el) => (
+							<UsersItems key={el.id} user={el}></UsersItems>
+						))}
+					</ul>
+					<Pagination
+						totalResult={total}
+						limit={limit}
+						currentPage={query.page}
+					/>
+				</div>
+			) : (
+				<h1>Error</h1>
+				// <Error404 />
+			)}
 		</>
 	);
 };
 
-export const getStatic: GetServerSideProps<{
+export const getServerSideProps: GetServerSideProps<{
 	data: UsersProps;
 }> = async ({ query }) => {
 	const res = await fetch(
-		`ttps://dummyjson.com/users?limit=10&skip=" + ${query.name} + "0"`
+		`https://dummyjson.com/users?limit=10&skip=${query.page}0`
 	);
-	const data: any = await res.json();
-	console.log("dsdsds");
+	const data: UsersProps = await res.json();
 
 	return {
 		props: {
