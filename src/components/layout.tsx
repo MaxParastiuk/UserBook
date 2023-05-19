@@ -1,15 +1,15 @@
-import { ReactNode } from "react";
-import Header from "./Header";
+import { ReactNode } from 'react';
+import Header from './Header';
 
 interface Props {
-	children?: ReactNode;
+  children?: ReactNode;
 }
 
 const Layout = ({ children }: Props) => (
-	<>
-		<Header />
-		{children}
-	</>
+  <>
+    <Header />
+    {children}
+  </>
 );
 
 export default Layout;

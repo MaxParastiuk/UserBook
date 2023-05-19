@@ -1,27 +1,27 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: [
-		"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-		"./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-	],
-	theme: {
-		extend: {
-			backgroundImage: {
-				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-				"gradient-conic":
-					"conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-			},
-			fontFamily: {
-				lemon: ["Lemon"],
-			},
-			flexBasis: {
-				"xl-1": "18.4%",
-				"xl-2": "23.5%",
-				"md-2": "32%",
-				"sm-3": "100%",
-			},
-		},
-	},
-	plugins: [],
+  content: [
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic':
+          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
+      fontFamily: {
+        lemon: ['Lemon'],
+      },
+      flexBasis: {
+        'xl-1': '18.4%',
+        'xl-2': '23.5%',
+        'md-2': '32%',
+        'sm-3': '100%',
+      },
+    },
+  },
+  plugins: [],
 };
