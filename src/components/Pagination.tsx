@@ -1,4 +1,5 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
+import Link from 'next/link';
 import React from 'react';
 
 type PaginProps = {
@@ -20,18 +21,18 @@ const Pagination: React.FC<PaginProps> = ({
   return (
     <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
       <div className="flex flex-1 justify-between sm:hidden">
-        <a
-          href="#"
+        <Link
+          href={+currentPage != 1 ? `${+currentPage - 1}` : `${currentPage}`}
           className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
         >
           Previous
-        </a>
-        <a
-          href="#"
+        </Link>
+        <Link
+          href={+currentPage != 9 ? `${+currentPage + 1}` : `${currentPage}`}
           className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
         >
           Next
-        </a>
+        </Link>
       </div>
       <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
         <div>
@@ -63,16 +64,16 @@ const Pagination: React.FC<PaginProps> = ({
             ) : null}
             {pages.map((page, index) =>
               page === +currentPage + 3 ? (
-                <a
+                <Link
                   key={index}
                   href={`${+currentPage + 3}`}
                   className=" px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
                 >
                   ...
-                </a>
+                </Link>
               ) : page === +currentPage + 4 ||
                 page === +currentPage + 5 ? null : (
-                <a
+                <Link
                   key={index}
                   href={`${page}`}
                   className={
@@ -82,7 +83,7 @@ const Pagination: React.FC<PaginProps> = ({
                   }
                 >
                   {page}
-                </a>
+                </Link>
               ),
             )}
 
