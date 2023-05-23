@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import logo from '../../public/user-logo.png';
-import ActiveLink from './ActiveLink';
 import SearchForm from './SearchForm';
+import Link from 'next/link';
 
 function Header() {
   return (
@@ -25,8 +25,18 @@ function Header() {
 
               <div className="">
                 <div className=" flex items-baseline space-x-4">
-                  <ActiveLink to="/">Home</ActiveLink>
-                  <ActiveLink to="/users/1">Users List</ActiveLink>
+                  <Link
+                    className="font-lemon bg-gray-600 text-lg text-white hover:bg-blue-800 rounded-md p-3 duration-500"
+                    href="/"
+                  >
+                    Home
+                  </Link>
+                  <Link
+                    className="font-lemon bg-gray-600 text-lg text-white hover:bg-blue-800 rounded-md p-3 duration-500"
+                    href="/users/1"
+                  >
+                    Users List
+                  </Link>
                 </div>
               </div>
             </div>

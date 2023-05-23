@@ -1,10 +1,10 @@
-import { IUser } from '@/interfaces/IUser';
+import { IUser } from '@/types';
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 
-interface UserProps {
+type UserProps = {
   data: IUser;
-}
+};
 
 const UserPage = ({ data }: UserProps) => {
   const {

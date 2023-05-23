@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
 import Header from './Header';
 
-interface Props {
+type Props = {
   children?: ReactNode;
-}
+};
 
 const Layout = ({ children }: Props) => (
   <>

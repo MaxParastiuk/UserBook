@@ -1,4 +1,4 @@
-export interface IUser {
+export type IUser = {
   id: number;
   firstName: string;
   lastName: string;
@@ -37,17 +37,17 @@ export interface IUser {
   ein: string;
   ssn: string;
   userAgent: string;
-}
+};
 
-interface IAddress {
+type IAddress = {
   address: string;
   city: string;
   coordinates: ICoordinate;
   postalCode: string;
   state: string;
-}
+};
 
-interface ICoordinate {
+type ICoordinate = {
   lat: number;
   lng: number;
-}
+};

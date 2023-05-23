@@ -1,11 +1,9 @@
-import Link from 'next/link';
-import { GetServerSideProps } from 'next/types';
-import Image from 'next/image';
-import { IUser } from '@/interfaces/IUser';
 import Pagination from '@/components/Pagination';
 import { UsersItems } from '@/components/UsersItem';
+import { IUser } from '@/types';
+import { GetServerSideProps } from 'next/types';
 
-interface UsersProps {
+type UsersProps = {
   data: {
     users: IUser[];
     total: number;
@@ -13,7 +11,7 @@ interface UsersProps {
     limit: number;
   };
   query: { page: string };
-}
+};
 
 const ListUserPage = ({ data, query }: UsersProps) => {
   const { users, limit, total } = data;

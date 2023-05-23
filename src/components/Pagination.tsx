@@ -1,17 +1,21 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
-import { useEffect } from 'react';
+import React from 'react';
 
-interface PaginProps {
+type PaginProps = {
   totalResult: number;
   currentPage: string;
   limit: number;
-}
+};
 
-const Pagination = ({ totalResult, currentPage, limit }: PaginProps) => {
+const Pagination: React.FC<PaginProps> = ({
+  totalResult,
+  currentPage,
+  limit,
+}) => {
   const pages: number[] = [];
   const amountPages: number = totalResult / limit;
   const nextListPage: number = 5;
-  createPages(pages, limit, +currentPage, amountPages, nextListPage);
+  createPages(pages, limit, +currentPage, amountPages);
 
   return (
     <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
@@ -103,9 +107,8 @@ function createPages(
   pagesCount: number,
   currentPage: number,
   amountPages: number,
-  nextListPage: number,
 ) {
-  if (--pagesCount > 9) {
+  if (pagesCount > 9) {
     if (currentPage > 5) {
       for (let i = currentPage - 4; i <= currentPage + 5; i++) {
         pages.push(i);

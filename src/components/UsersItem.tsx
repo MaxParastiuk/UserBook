@@ -1,10 +1,10 @@
-import { IUser } from '@/interfaces/IUser';
+import { IUser } from '@/types';
 import Image from 'next/image';
 import Link from 'next/link';
 
-interface UsersItemProps {
+type UsersItemProps = {
   user: IUser;
-}
+};
 
 export const UsersItems = ({ user }: UsersItemProps) => {
   return (
